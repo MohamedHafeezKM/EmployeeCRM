@@ -1,0 +1,85 @@
+
+{%extends 'base.html'%}
+
+{%block body_block%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8 mb-4">
+             <form action="" method="post">
+                {%csrf_token%}
+                <div class="d-flex mt-2">
+                    <input type="text" name="box" placeholder="Employee name" class="form-control me-2" >
+                    <button type="submit" class="btn btn-outline-light">Search</button>
+                </div>
+
+             </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 col-12">
+            <h4>Filter By Department</h4>
+            
+            <div>
+                {%for dep in departments%}
+                    <a href="{%url 'all_employees'%}?department={{dep}}">{{dep}}</a>
+                {%endfor%}
+            </div>
+        </div>
+        <div class="col-lg-8 col-12 ">
+            <h2>All Employees List</h2>
+            <hr>
+          
+              <div>
+                <table class="table">
+                    <tr> <!--row-->
+                        <td>Name</td>
+                        <td>Department</td>
+                        <td>Salary</td>
+                        <td>Email</td>
+                        <td>Action</td>
+                        <td>Image</td>
+                    </tr>
+                    {%for emp in data%}
+                    <tr>     <!--row starts-->
+                        <td>{{emp.name}}</td> <!--title-->
+                        <td>{{emp.department}}</td>
+                        <td>{{emp.salary}}</td>
+                        <td>{{emp.email}}</td>
+                        <td>
+                            <a href="{%url 'emp_details' emp.id%}">View</a> <!--Customer click here, fromhere>urls>views>template.html-->
+                            <a href="{%url 'emp_delete' emp.id%}">Delete</a>
+                            <a href="{%url 'emp_change' emp.id%}">Edit</a>
+
+
+                        </td>
+                        <td>
+                            {%if emp.image%}
+                                 <img src="{{emp.image.url}}" alt="" style="width: 30px;height: 30px;">
+                            {%endif%}
+                        </td>
+                    </tr>
+
+                    {%endfor%}
+                </table>
+                <hr>
+                <div><a href="{%url 'emp_add'%}">Add New Employee</a></div>
+              </div>
+              
+              
+             
+            
+        </div>
+        <div class="col-lg-2 col-12"></div>
+    </div>
+</div>
+
+{%endblock%}

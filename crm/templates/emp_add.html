@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+{%block body_block%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h2>Register Employee</h2>
+            <!-- enctype="multipart/form-data" for images/files to process  -->
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token%}
+                {{form.as_p}}
+            <button type="submit" class="btn btn-outline-light">Register</button>
+            </form>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+{%endblock%}

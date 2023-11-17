@@ -1,0 +1,94 @@
+from django.db import models
+
+# Create your models here.
+
+class Employees(models.Model):
+    name=models.CharField(max_length=100)
+    department=models.CharField(max_length=100) #for Charfield, max_length is needed
+    salary=models.PositiveIntegerField()
+    email=models.EmailField(unique=True)  #unique=True means same email cannot be used for other ids
+    age=models.PositiveIntegerField()
+    contact=models.CharField(null=True,max_length=10)
+
+
+to open a shell- run the code in terminal- python manage.py shell
+
+-----orm query for creating new object-------
+
+in shell
+
+>>>from folder_name.models import class_name    (importing)
+
+>>>Employees.objects.create(name='lal',department='CS',salary=25000,email='lalji@hotmail.com',age=21,contact='911')
+
+
+------orm query for fetching all records------
+>>>variable=class_name.objects.all()
+>>>variable
+
+eg->>>qs=Employees.objects.all()
+   >>>qs
+
+
+------Orm query for fecthing a specific employee detail-------
+>>>variable=class_name.objects.get(field_name=value)
+>>>variable
+
+eg->>>qs=Employees.objects.get(id=1)
+   >>>qs
+
+
+-------Orm query for filtering employee records--------
+>>>variable=class_name.objects.filter(field_name=value)
+>>>variable
+
+eg->>>qs=Employees.objects.filter(department='hr')
+>>>qs
+
+
+---Orm query for greater than,less than, equal to---
+
+__gte >=
+__lte <=
+__gt  >
+__lt  <
+
+>>>qs=Employees.objects.filter(salary__gt=25000)
+>>>qs
+>>>qs=Employees.objects.filter(salary__lt=25000) 
+>>>qs
+
+----Orm query for excluding an object---
+>>>variable=class_name.objects.exclude(field_name=value)
+>>>variable
+
+>>>qs=Employees.objects.exclude(department='hr')
+>>>qs
+
+
+-----Orm query for updating an objects------
+>>>variable=class_name.objects.filter(field_name=value).update(field_name=value,field_name=value)
+>>>variable
+
+>>> qs=Employees.objects.filter(id=1).update(age=20,contact='9179545891')
+>>> qs
+
+
+----Orm query for deleting an objects------
+
+>>>class_name.objects.filter(field_name=value).delete()
+
+>>> qs=Employees.objects.filter(id=2).delete()                            
+
+
+
+---Orm query for sorting----
+
+>>>class_name.objects.all().order_by('field_name')  ascending order
+>>>class_name.objects.all().order_by('-field_name') descending order
+
+
+
+>>> Employees.objects.all().order_by('salary') 
+
+>>> Employees.objects.all().order_by('-salary')

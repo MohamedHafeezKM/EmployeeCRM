@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+{%block body_block%}
+
+<div class="container d-flex justify-content-center">
+    <div>
+        <h3>Employees detail</h3>
+        
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <div class="d-flex justify-content-center">
+                {%if data.image%} <!--if data.image available-->
+                    <img src="{{data.image.url}}" alt="" style="width: 200px; height: 200px;">
+                {%endif%}
+              </div>
+              <h5 class="card-title">Name:{{data.name}}</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">Department:{{data.department}}</h6>
+              <p class="card-text">Salary:{{data.salary}}</p>
+              <p class="card-text">Age:{{data.age}}</p>
+              <p class='card-text'>Date of Birth:{{data.date_of_birth}}</p>
+              Contact:<a href="#" class="card-link">{{data.contact}}</a>
+              Email:<a href="#" class="card-link">{{data.email}}</a>
+            </div>
+          </div>
+    </div>
+</div>
+
+{%endblock%}
