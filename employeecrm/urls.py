@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from crm.views import EmployeeCreateView,EmployeeListView,EmployeeDetailView,EmployeeDeleteView,EmployeeUpdateView,RegistrationFormView,SignInView,SignOutView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -28,5 +28,6 @@ urlpatterns = [
     path('employees/<int:pk>/change',EmployeeUpdateView.as_view(),name='emp_change'),
     path('signup/',RegistrationFormView.as_view(),name='signup'),
     path('',SignInView.as_view(),name='signin'),
-    path('signout/',SignOutView.as_view(),name='signout')
+    path('signout/',SignOutView.as_view(),name='signout'),
+    path('api/',include('api.urls'))
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

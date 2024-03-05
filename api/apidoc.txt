@@ -1,0 +1,34 @@
+1)list all employees
+==============================
+
+url:localhost:8000/api/employees/
+method:get
+data:nill
+
+
+2)employee detail
+========================================
+
+url:localhost:8000/api/employees/{id}/
+method:get
+data:nill
+
+
+3)employee create
+===========================================
+
+url:localhost:8000/api/employees/
+method:post
+data:{name,department,salary,email,age,contact,images,dob}
+
+4)employee update
+===============================================
+url:localhost:8000/api/employees/{id}/
+method:put
+data:{name,department,salary,email,age,contact,images,dob}
+
+5)employee delete
+====================================================
+url:localhost:8000/api/employees/{id}/
+method:delete
+data:nill

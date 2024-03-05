@@ -26,17 +26,19 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-2 col-12">
-            <h4>Filter By Department</h4>
             
+        </div>
+        <div class="col-lg-8 col-12 ">
+            
+            <h2>All Employees List</h2>
+            <hr>
+            <h6>Filter By Department</h6>
             <div>
                 {%for dep in departments%}
                     <a href="{%url 'all_employees'%}?department={{dep}}">{{dep}}</a>
                 {%endfor%}
             </div>
-        </div>
-        <div class="col-lg-8 col-12 ">
-            <h2>All Employees List</h2>
-            <hr>
+            
           
               <div>
                 <table class="table">
